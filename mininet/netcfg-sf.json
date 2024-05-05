@@ -4,72 +4,60 @@
       "basic": {
         "managementAddress": "grpc://mininet:50001?device_id=1",
         "driver": "stratum-bmv2",
-        "pipeconf": "org.onosproject.pipelines.fabric",
+        "pipeconf": "org.onosproject.ngsdn-tutorial",
         "locType": "grid",
         "gridX": 200,
         "gridY": 600
       },
-      "segmentrouting": {
-        "name": "leaf1",
-        "ipv4NodeSid": 101,
-        "ipv4Loopback": "192.168.1.1",
-        "routerMac": "00:AA:00:00:00:01",
-        "isEdgeRouter": true,
-        "adjacencySids": []
+      "fabricDeviceConfig": {
+        "myStationMac": "00:aa:00:00:00:01",
+        "mySid": "3:101:2::",
+        "isSpine": false
       }
     },
     "device:leaf2": {
       "basic": {
         "managementAddress": "grpc://mininet:50002?device_id=1",
         "driver": "stratum-bmv2",
-        "pipeconf": "org.onosproject.pipelines.fabric",
+        "pipeconf": "org.onosproject.ngsdn-tutorial",
         "locType": "grid",
         "gridX": 800,
         "gridY": 600
       },
-      "segmentrouting": {
-        "name": "leaf2",
-        "ipv4NodeSid": 102,
-        "ipv4Loopback": "192.168.1.2",
-        "routerMac": "00:AA:00:00:00:02",
-        "isEdgeRouter": true,
-        "adjacencySids": []
+      "fabricDeviceConfig": {
+        "myStationMac": "00:aa:00:00:00:02",
+        "mySid": "3:102:2::",
+        "isSpine": false
       }
     },
     "device:spine1": {
       "basic": {
         "managementAddress": "grpc://mininet:50003?device_id=1",
         "driver": "stratum-bmv2",
-        "pipeconf": "org.onosproject.pipelines.fabric",
+        "pipeconf": "org.onosproject.ngsdn-tutorial",
         "locType": "grid",
         "gridX": 400,
         "gridY": 400
       },
-      "segmentrouting": {
-        "name": "spine1",
-        "ipv4NodeSid": 201,
-        "ipv4Loopback": "192.168.2.1",
-        "routerMac": "00:BB:00:00:00:01",
-        "isEdgeRouter": false,
-        "adjacencySids": []
+      "fabricDeviceConfig": {
+        "myStationMac": "00:bb:00:00:00:01",
+        "mySid": "3:201:2::",
+        "isSpine": true
       }
     },
     "device:spine2": {
       "basic": {
         "managementAddress": "grpc://mininet:50004?device_id=1",
         "driver": "stratum-bmv2",
-        "pipeconf": "org.onosproject.pipelines.fabric",
+        "pipeconf": "org.onosproject.ngsdn-tutorial",
         "locType": "grid",
         "gridX": 600,
         "gridY": 400
       },
-      "segmentrouting": {
-        "name": "spine2",
-        "ipv4NodeSid": 202,
-        "ipv4Loopback": "192.168.2.2",
-        "routerMac": "00:BB:00:00:00:02",
-        "isEdgeRouter": false,
-        "adjacencySids": []
+      "fabricDeviceConfig": {
+        "myStationMac": "00:bb:00:00:00:02",
+        "mySid": "3:202:2::",
+        "isSpine": true
       }
     }
   },
@@ -78,10 +66,7 @@
       "interfaces": [
         {
           "name": "leaf1-3",
-          "ips": [
-            "172.16.1.254/24"
-          ],
-          "vlan-untagged": 100
+          "ips": ["2001:1:1::ff/64"]
         }
       ]
     },
@@ -89,10 +74,7 @@
       "interfaces": [
         {
           "name": "leaf1-4",
-          "ips": [
-            "172.16.1.254/24"
-          ],
-          "vlan-untagged": 100
+          "ips": ["2001:1:1::ff/64"]
         }
       ]
     },
@@ -100,12 +82,7 @@
       "interfaces": [
         {
           "name": "leaf1-5",
-          "ips": [
-            "172.16.1.254/24"
-          ],
-          "vlan-tagged": [
-            100
-          ]
+          "ips": ["2001:1:1::ff/64"]
         }
       ]
     },
@@ -113,12 +90,7 @@
       "interfaces": [
         {
           "name": "leaf1-6",
-          "ips": [
-            "172.16.2.254/24"
-          ],
-          "vlan-tagged": [
-            200
-          ]
+          "ips": ["2001:1:2::ff/64"]
         }
       ]
     },
@@ -126,12 +98,7 @@
       "interfaces": [
         {
           "name": "leaf2-3",
-          "ips": [
-            "172.16.3.254/24"
-          ],
-          "vlan-tagged": [
-            300
-          ]
+          "ips": ["2001:2:3::ff/64"]
         }
       ]
     },
@@ -139,10 +106,7 @@
       "interfaces": [
         {
           "name": "leaf2-4",
-          "ips": [
-            "172.16.4.254/24"
-          ],
-          "vlan-untagged": 400
+          "ips": ["2001:2:4::ff/64"]
         }
       ]
     }
@@ -164,7 +128,7 @@
         "gridY": 800
       }
     },
-    "00:00:00:00:00:1C/100": {
+    "00:00:00:00:00:1C/None": {
       "basic": {
         "name": "h1c",
         "locType": "grid",
@@ -172,7 +136,7 @@
         "gridY": 800
       }
     },
-    "00:00:00:00:00:20/200": {
+    "00:00:00:00:00:20/None": {
       "basic": {
         "name": "h2",
         "locType": "grid",
@@ -180,7 +144,7 @@
         "gridY": 700
       }
     },
-    "00:00:00:00:00:30/300": {
+    "00:00:00:00:00:30/None": {
       "basic": {
         "name": "h3",
         "locType": "grid",

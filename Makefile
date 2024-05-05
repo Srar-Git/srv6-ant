@@ -37,8 +37,9 @@ _start:
 	@mkdir -p tmp/onos
 	@NGSDN_TOPO_PY=${NGSDN_TOPO_PY} docker-compose up -d
 
-start: NGSDN_TOPO_PY := topo-v6.py
+start: NGSDN_TOPO_PY := topo-sf.py
 start: _start
+
 
 start-v4: NGSDN_TOPO_PY := topo-v4.py
 start-v4: _start
@@ -79,6 +80,9 @@ _netcfg:
 
 netcfg: NGSDN_NETCFG_JSON := netcfg.json
 netcfg: _netcfg
+
+netcfg-sf: NGSDN_NETCFG_JSON := netcfg-sf.json
+netcfg-sf: _netcfg
 
 netcfg-sr: NGSDN_NETCFG_JSON := netcfg-sr.json
 netcfg-sr: _netcfg
